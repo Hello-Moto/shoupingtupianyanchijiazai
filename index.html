@@ -24,8 +24,11 @@
             img.onload = function(){ //当图片能够正常加载
                 picture.src = this.src;
                 picture.style.display = "block";
-            img = null;
+                img = null;
+                var nowTime = new Date; //利用事件异步加载原理计算当前图片需要多长时间加载完成
+                console.log(nowTime - time); //利用事件异步加载原理计算当前图片需要多长时间加载完成
             }
+            var time = new Date; //利用事件异步加载原理计算当前图片需要多长时间加载完成
         },500)
     </script>
 </body>
