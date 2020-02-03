@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>单张图片加载</title>
+    <style>
+        img{display: block;border: none;}
+        .banner{width: 1920px;height: 800px;margin: 10px auto;border: 1px solid purple;background: url("./default.jpg") no-repeat center #ccc}
+        .banner img{width: 100%;height: 100%;display: none;}
+    </style>
+</head>
+<body>
+    <div class="banner" id="banner">
+        <img src="" trueImg="correct_banner.jpg">
+    </div>
+    <script>
+        var banner = document.getElementById("banner");
+        var picture = banner.getElementsByTagName("img")[0];
+        window.setTimeout(function(){
+            var img = new Image;  //创建临时img标签验证图片地址有效性
+            img.src = picture.getAttribute("trueImg");
+            img.onload = function(){ //当图片能够正常加载
+                picture.src = this.src;
+                picture.style.display = "block";
+            img = null;
+            }
+        },500)
+    </script>
+</body>
+</html>
